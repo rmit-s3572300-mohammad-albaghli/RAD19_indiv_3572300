@@ -1,0 +1,23 @@
+<% provide(:title, "Home") %>
+<div class="center jumbotron">
+  <h1>Welcome to YOURCOURSE</h1>
+
+  <h2>
+    This is a placeholder text for RAD Assignment 2 Stage 1 demonstration!
+  </h2>
+  <%= link_to "Sign up now", signup_path, class: "btn btn-lg btn-primary button-img signup-button" %>
+</div>
+<div class="home-wrapper">
+  <div class="home-left">
+    <h3>Continue as Guess</h3>
+    <p>You can view the courses as a guest user before signing up</p>
+    <%= link_to "Browse all courses", signup_path, class: "btn btn-lg btn-success button-img courses-button" %>
+  </div>
+  <div class="home-right">
+    <h3>Already a User?</h3>
+    <p>Click on the button below to log in!</p>
+    <%= link_to "Log In", signup_path, class: "btn btn-lg btn-success button-img login-button" %>
+  </div>
+</div>
+<div>
+</div>
