@@ -11,6 +11,18 @@
     </li>
   <% end %>
   </ul>
+  <ul class="users">
+    <% @courses.each do |course| %>
+      <li>
+        <%= course.name %>
+        <%= course.prerequisite %>
+        <%= course.category %>
+        <%= course.location %>
+        <%= course.like %>
+        <%= course.dislike %>
+      </li>
+    <% end %>
+  </ul>
 <% else %>
   <div class="center jumbotron">
     <h1>Welcome to YOURCOURSE</h1>
