@@ -1,10 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  email: MyString
+  name: Brandon Lee
+  email: brandon.lee@rmit.edu.au
 
 two:
-  name: MyString
-  email: MyString
+  name: Mohammad Albaghli
+  email: mohammad.baghli@rmit.edu.au
   

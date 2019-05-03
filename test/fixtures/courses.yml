@@ -7,7 +7,7 @@ one:
   location: MyString
   like: 1
   dislike: 1
-  user: one
+  user_id: 1
 
 two:
   name: MyString
@@ -16,4 +16,4 @@ two:
   location: MyString
   like: 1
   dislike: 1
-  user: two
+  user_id: 2

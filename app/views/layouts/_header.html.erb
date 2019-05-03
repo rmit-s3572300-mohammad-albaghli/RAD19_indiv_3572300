@@ -3,12 +3,15 @@
     <%= link_to "YOURCOURSE", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "Coordinators", coordinators_path %></li>
           <li class="dropdown">
              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Category<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                  <li><a href="#">Web Development</a></li>
                  <li><a href="#">Full Stack Dev</a></li>
                  <li><a href="#">IOS Engineering</a></li>
+                 <li class="divider"></li>
+                 <li><a href="#"><%= link_to "All Courses", courses_path %></a></li>
               </ul>
           </li>
           <li class="dropdown">
@@ -17,6 +20,8 @@
                  <li><a href="#">14.10.31</a></li>
                  <li><a href="#">14.8.26</a></li>
                  <li><a href="#">14.10.30</a></li>
+                 <li class="divider"></li>
+                 <li><a href="#"><%= link_to "All Courses", courses_path %></a></li>
               </ul>
           </li>
           <% if logged_in %>

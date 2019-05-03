@@ -6,8 +6,11 @@ Rails.application.routes.draw do
   get    '/contact', to: 'static_pages#contact'
   get    '/signup',  to: 'users#new'
   get    '/login',   to: 'sessions#new'
+  get    '/coordinators', to: 'users#index'
+  get    '/courses', to: 'courses#index'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-  resources :users
   
+  resources :users
+  resources :courses
 end

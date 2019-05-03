@@ -113,7 +113,7 @@ p {
 
 .home-right {
   width: 50%;
-  float: left;
+  float: right;
 }
 
 /* forms */
@@ -201,4 +201,30 @@ section .section-title {
   border-bottom: 1px solid #000000;
   margin-bottom: 5px;
   color: #ffffff;
+}
+
+.course-wrapper {
+  height: 250px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid $gray-lighter;
+}
+
+.course-left {
+  width: 20%;
+  float: left;
+}
+
+.course-right {
+  width: 80%;
+  float: right;
+}
+
+.courses {
+  list-style: none;
+  margin: 0;
+  text-decoration: none;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+  }
 }

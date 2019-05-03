@@ -1,0 +1,27 @@
+<h1>All Courses</h1>
+<hr>
+<div>
+  <% @courses.each do |course| %>
+  <div class="course-wrapper">
+    <div class="course-left">
+    <h4>Coordinator:</h4>
+    <% @users.each do |user| %>
+      <% if user.id == course.user_id %>
+        <%= gravatar_for user %>
+        <%= user.name %>
+      <% end %>
+    <% end %>
+    </div>
+    <div class="course-right">
+    <ul class="courses">
+        <li>Course Name: <%= course.name %></li>
+        <li>Prerequisite: <%= course.prerequisite %></li>
+        <li>Category: <%= course.category %></li>
+        <li>Location: <%= course.location %></li>
+        <li>Like: <%= course.like %></li>
+        <li>Dislike: <%= course.dislike %></li>
+    </ul>
+    </div>
+  </div>
+  <% end %>
+</div>

@@ -1,28 +1,6 @@
 <% provide(:title, "Home") %>
 <% if logged_in %>
-  <h1>All users</h1>
-  <ul class="users">
-  <% @users.each do |user| %>
-    <li>
-      <h1 class="usersh1">
-        <%= gravatar_for user %>
-        <%= link_to user.name, user %>
-      </h1>
-    </li>
-  <% end %>
-  </ul>
-  <ul class="users">
-    <% @courses.each do |course| %>
-      <li>
-        <%= course.name %>
-        <%= course.prerequisite %>
-        <%= course.category %>
-        <%= course.location %>
-        <%= course.like %>
-        <%= course.dislike %>
-      </li>
-    <% end %>
-  </ul>
+<%= render 'courses/courseslist' %>
 <% else %>
   <div class="center jumbotron">
     <h1>Welcome to YOURCOURSE</h1>
@@ -36,7 +14,7 @@
     <div class="home-left">
       <h3>Continue as Guess</h3>
       <p>You can view the courses as a guest user before signing up</p>
-      <%= link_to "Browse all courses", signup_path, class: "btn btn-lg btn-success button-img courses-button" %>
+      <%= link_to "Browse all courses", courses_path, class: "btn btn-lg btn-success button-img courses-button" %>
     </div>
     <div class="home-right">
       <h3>Already a User?</h3>
@@ -46,44 +24,6 @@
   </div>
   <div>
   </div>
-  <div class="navbar navbar-fixed-bottom">
-  <section id="footer">
-    <div class="container">
-      <div class="row text-center text-xs-center text-sm-left text-md-left">
-        <div class="col-xs-12 col-sm-4 col-md-4">
-          <h4>Contact Us</h4>
-          <form class="footerform">
-          <input type="text" class="form-control" placeholder="Name">
-          <input type="email" class="form-control" placeholder="Email">
-          <textarea class="form-control" rows="3" placeholder="Subject"></textarea>
-          <button type="button" class="btn btn-default btn-sm">Submit</button>
-          </form>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-md-4">
-          <h4>General Inquiries</h4>
-          <ul class="list-unstyled quick-links">
-            <li><a></i>Andy</a></li>
-            <li><a></i>Junliang</a></li>
-            <li><a></i>Ali</a></li>
-          </ul>
-          <br>
-          <h4>Useful Links</h4>
-          <ul class="list-unstyled quick-links">
-            <li><a></i>RMIT Course</a></li>
-            <li><a></i>RMIT Help Desk</a></li>
-            <li><a></i>FAQ</a></li>
-          </ul>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-md-4">
-          <h4>Quick links</h4>
-          <ul class="list-unstyled quick-links">
-            <li><a></i>YouTube</a></li>
-            <li><a></i>Twitter</a></li>
-            <li><a></i>Facebook</a></li>
-            <li><a></i>Instagram</a></li>
-          </ul>
-        </div>
-      </div>
-  </section>
+  <%= render 'layouts/footer' %>
 </div>
 <% end %>

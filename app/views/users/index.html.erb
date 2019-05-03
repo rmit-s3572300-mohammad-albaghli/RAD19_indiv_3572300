@@ -1,11 +1,2 @@
-<h1>All users</h1>
-<ul class="users">
-<% @users.each do |user| %>
-  <li>
-    <h1 class="usersh1">
-      <%= gravatar_for user %>
-      <%= link_to user.name, user %>
-    </h1>
-  </li>
-<% end %>
-</ul>
+<% provide(:title, "ALl Coordinators") %>
+<%= render 'users/userslist' %>
