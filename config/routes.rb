@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   get    '/coordinators', to: 'users#index'
   get    '/courses', to: 'courses#index'
+  get    '/courses_location', to: 'courses#locationfilter'
+  get    '/courses_category', to: 'courses#categoryfilter'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   
