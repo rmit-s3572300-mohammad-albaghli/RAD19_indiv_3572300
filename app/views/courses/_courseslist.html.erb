@@ -18,6 +18,7 @@
         <li>Prerequisite: <%= course.prerequisite %></li>
         <li>Category: <%= course.category %></li>
         <li>Location: <%= course.location %></li>
+        <li>Created <%= time_ago_in_words(course.created_at) %> ago</li>
         <li>Like: <%= course.like %></li>
         <li>Dislike: <%= course.dislike %></li>
     </ul>
