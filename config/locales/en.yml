@@ -36,6 +36,10 @@ en:
       user:
         email: "E-mail"
         password_confirmation: "Password Confirmation"
+      category:
+        name: "Category Name"
+      location:
+        name: "Location Name"
     errors:
       models:
         user:

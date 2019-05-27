@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   root   'static_pages#home'
   get    '/help',    to: 'static_pages#help'
   get    '/about',   to: 'static_pages#about'
@@ -10,9 +10,14 @@ Rails.application.routes.draw do
   get    '/courses', to: 'courses#index'
   get    '/courses_location', to: 'courses#locationfilter'
   get    '/courses_category', to: 'courses#categoryfilter'
+  get    '/new_category', to: 'categories#new'
+  get    '/new_location', to: 'locations#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   
   resources :users
   resources :courses
+  resources :categories
+  resources :locations
+  
 end
