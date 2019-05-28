@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Name: Mohammad Albaghli
 
-Things you may want to cover:
+Highest Grade Attempt: 80+
 
-* Ruby version
+Time Spent: ~20 hours
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Heroku Deployment: https://yourcourse-s3572300.herokuapp.com/
