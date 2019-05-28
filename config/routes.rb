@@ -17,6 +17,10 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   
+  get '/404', to: "error#not_found"
+  get '/422', to: "error#unacceptable"
+  get '/500', to: "error#server_errors"
+  
   resources :users
   resources :courses
   resources :categories
