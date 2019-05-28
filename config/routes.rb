@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get    '/new_course', to: 'courses#new'
   get    '/courses_location', to: 'courses#locationfilter'
   get    '/courses_category', to: 'courses#categoryfilter'
+  get    '/like', to: 'courses#like'
   get    '/new_category', to: 'categories#new'
   get    '/new_location', to: 'locations#new'
   post   '/login',   to: 'sessions#create'

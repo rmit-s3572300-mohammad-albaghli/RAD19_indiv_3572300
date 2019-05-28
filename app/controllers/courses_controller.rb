@@ -22,8 +22,8 @@ class CoursesController < ApplicationController
   
   def create
     @course = Course.new(category_params)
-    @course.like = 0
-    @course.dislike = 0
+    @course.like = "0"
+    @course.dislike = "0"
     @course.user_id = current_user.id
     @course.category_ids = params[:category_ids]
     @course.location_ids = params[:location_ids]
@@ -35,9 +35,42 @@ class CoursesController < ApplicationController
     end
   end
   
+  def like
+    @course = Course.find(params[:course_id])
+    vote_boolean = true
+    all_likes = @course.like.split(',')
+    all_dislikes = @course.dislike.split(',')
+    
+    all_likes.each do |id|
+      if (id == current_user.id.to_s)
+        vote_boolean = false
+      end
+    end
+    
+    all_dislikes.each do |id|
+      if (id == current_user.id.to_s)
+        vote_boolean = false
+      end
+    end
+    
+    if (vote_boolean == true)
+      if(params[:to_do] == "like")
+        like_string = @course.like + "," + current_user.id.to_s
+        @course.like = like_string
+      else 
+        dislike_string = @course.dislike + "," + current_user.id.to_s
+        @course.dislike = dislike_string
+      end
+      @course.save
+    else 
+      flash[:danger] = "You can only vote a course once!"
+    end
+    redirect_to :controller => 'static_pages', :action => 'home'
+  end
+  
   private
   def category_params
-    params.require(:course).permit(:name, :prerequisite, :description)
+    params.require(:course).permit(:name, :prerequisite, :description, :picture)
   end
   
 end

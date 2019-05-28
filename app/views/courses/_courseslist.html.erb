@@ -11,6 +11,10 @@
         <%= user.name %>
       <% end %>
     <% end %>
+    <% if course.picture? %>
+      <h4>Course Picture:</h4>
+      <%= image_tag course.picture.url, class: "course-image" %>
+    <% end %>
     </div>
     <div class="course-right">
     <ul class="courses">
@@ -33,9 +37,10 @@
             , <%= location.name %>
           <% end %>
         <% end %></li>
+        <li>Description: <%= course.description %></li>
         <li>Created <%= time_ago_in_words(course.created_at) %> ago</li>
-        <li>Like: <%= course.like %></li>
-        <li>Dislike: <%= course.dislike %></li>
+        <li><%= link_to "Like:", like_path(:course_id => course.id, :to_do => "like") %> <%= course.like.split(',').size-1 %></li>
+        <li><%= link_to "Dislike:", like_path(:course_id => course.id, :to_do => "dislike") %> <%= course.dislike.split(',').size-1 %></li>
     </ul>
     </div>
   </div>
