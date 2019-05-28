@@ -102,6 +102,9 @@ p {
   background-size: 22px 22px;;
 }
 
+.form-button {
+  width: 100%;
+}
 .home-wrapper {
   height: 175px;
 }
@@ -120,13 +123,13 @@ p {
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
-  width: 100%;
   margin-bottom: 15px;
 }
 
-input {
-  height: auto !important;
+.input_checkbox input {
+  width: auto !important;
 }
+
 
 #error_explanation {
   color: red;

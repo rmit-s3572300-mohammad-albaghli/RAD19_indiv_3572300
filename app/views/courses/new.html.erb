@@ -1,0 +1,55 @@
+<% provide(:title, 'Create a Course') %>
+<% if logged_in %>
+<h1>Create a Course</h1>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= form_for(@course) do |f| %>
+        <%= render 'shared/course_error_messages' %>
+  
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control' %>
+  
+        <%= f.label :prerequisite %>
+        <%= f.text_field :prerequisite, class: 'form-control' %>
+      
+        <%= f.label :description %>
+        <%= f.text_area :description, class: 'form-control' %>
+        
+        <div class="form">
+        <%= f.label "Category:" %>
+        <% Category.all.each do |category| %>
+          <label class="checkbox-inline">
+            <%= check_box_tag "category_ids[]", category.id %>
+            <%= category.name %>
+          </label>
+        <% end %>
+        </div>
+        
+        <div class="form">
+        <%= f.label "Location:" %>
+        <% Location.all.each do |location| %>
+          <label class="checkbox-inline">
+            <%= check_box_tag "location_ids[]", location.id %><%= location.name %><%= location.id %>
+          </label>
+        <% end %>
+        </div>
+        
+        <%= f.submit "Create New Category", class: "btn btn-lg btn-primary button-img form-button" %>
+      <% end %>
+    </div>
+</div>
+<% else %>
+  <h1>You must be logged in to create a category!</h1>
+  <div class="home-wrapper">
+    <div class="home-left">
+      <h3>Continue as Guest</h3>
+      <p>You can view the courses as a guest user before signing up</p>
+      <%= link_to "Browse all courses", courses_path, class: "btn btn-lg btn-success button-img courses-button" %>
+    </div>
+    <div class="home-right">
+      <h3>Already a User?</h3>
+      <p>Click on the button below to log in!</p>
+      <%= link_to "Log In", login_path, class: "btn btn-lg btn-success button-img login-button" %>
+    </div>
+  </div>
+<% end %>

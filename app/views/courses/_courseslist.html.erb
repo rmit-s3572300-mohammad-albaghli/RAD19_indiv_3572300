@@ -16,8 +16,23 @@
     <ul class="courses">
         <li>Course Name: <%= course.name %></li>
         <li>Prerequisite: <%= course.prerequisite %></li>
-        <li>Category: <%= course.category %></li>
-        <li>Location: <%= course.location %></li>
+        <li>Category: 
+        <% course.categories.each do |category| %>
+          <% if course.categories.first == category %>
+            <%= category.name %>
+          <% else %>
+            , <%= category.name %>
+          <% end %>
+        <% end %>
+        </li>
+        <li>Location:
+        <% course.locations.each do |location| %>
+          <% if course.locations.first == location %>
+            <%= location.name %>
+          <% else %>
+            , <%= location.name %>
+          <% end %>
+        <% end %></li>
         <li>Created <%= time_ago_in_words(course.created_at) %> ago</li>
         <li>Like: <%= course.like %></li>
         <li>Dislike: <%= course.dislike %></li>
