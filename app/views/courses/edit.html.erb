@@ -1,47 +1,55 @@
 <% provide(:title, "Edit user") %>
-<h1>Update your profile</h1>
+<h1>Update your course</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-      <%= form_for(@course) do |f| %>
-        <%= render 'shared/course_error_messages' %>
-  
-        <%= f.label :name %>
-        <%= f.text_field :name, class: 'form-control' %>
-  
-        <%= f.label :prerequisite %>
-        <%= f.text_field :prerequisite, class: 'form-control' %>
-      
-        <%= f.label :description %>
-        <%= f.text_area :description, class: 'form-control' %>
+    <% if logged_in %>
+      <% if current_user.id == @course.id || %>
+        <%= form_for(@course) do |f| %>
+          <%= render 'shared/course_error_messages' %>
+    
+          <%= f.label :name %>
+          <%= f.text_field :name, class: 'form-control' %>
+    
+          <%= f.label :prerequisite %>
+          <%= f.text_field :prerequisite, class: 'form-control' %>
         
-        <div class="form">
-        <%= f.label "Category:" %>
-        <% Category.all.each do |category| %>
-          <label class="checkbox-inline">
-            <%= check_box_tag "category_ids[]", category.id, 
-            @course.category_ids.include?(category.id) %>
-            <%= category.name %>
-          </label>
+          <%= f.label :description %>
+          <%= f.text_area :description, class: 'form-control' %>
+          
+          <div class="form">
+          <%= f.label "Category:" %>
+          <% Category.all.each do |category| %>
+            <label class="checkbox-inline">
+              <%= check_box_tag "category_ids[]", category.id, 
+              @course.category_ids.include?(category.id) %>
+              <%= category.name %>
+            </label>
+          <% end %>
+          </div>
+          
+          <div class="form">
+          <%= f.label "Location:" %>
+          <% Location.all.each do |location| %>
+            <label class="checkbox-inline">
+              <%= check_box_tag "location_ids[]", location.id,
+              @course.location_ids.include?(location.id) %><%= location.name %><%= location.id %>
+            </label>
+          <% end %>
+          </div>
+          
+          <span class="picture">
+            <%= f.file_field :picture %>
+          </span>   
+          
+          <%= f.submit "Edit Course", class: "btn btn-lg btn-primary button-img form-button" %>
         <% end %>
-        </div>
-        
-        <div class="form">
-        <%= f.label "Location:" %>
-        <% Location.all.each do |location| %>
-          <label class="checkbox-inline">
-            <%= check_box_tag "location_ids[]", location.id,
-            @course.location_ids.include?(location.id) %><%= location.name %><%= location.id %>
-          </label>
-        <% end %>
-        </div>
-        
-        <span class="picture">
-          <%= f.file_field :picture %>
-        </span>   
-        
-        <%= f.submit "Edit Category", class: "btn btn-lg btn-primary button-img form-button" %>
+      <% else %>
+        <h1>This isn't your course!</h1>
       <% end %>
+    <% else %>
+      <h1>You are not logged in!</h1>
+    <% end %>
     <br>
   </div>
 </div>

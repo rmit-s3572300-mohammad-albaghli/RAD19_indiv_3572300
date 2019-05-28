@@ -56,30 +56,33 @@ class CoursesController < ApplicationController
     vote_boolean = true
     all_likes = @course.like.split(',')
     all_dislikes = @course.dislike.split(',')
-    
-    all_likes.each do |id|
-      if (id == current_user.id.to_s)
-        vote_boolean = false
+    if(logged_in)
+      all_likes.each do |id|
+        if (id == current_user.id.to_s)
+          vote_boolean = false
+        end
       end
-    end
-    
-    all_dislikes.each do |id|
-      if (id == current_user.id.to_s)
-        vote_boolean = false
+      
+      all_dislikes.each do |id|
+        if (id == current_user.id.to_s)
+          vote_boolean = false
+        end
       end
-    end
-    
-    if (vote_boolean == true)
-      if(params[:to_do] == "like")
-        like_string = @course.like + "," + current_user.id.to_s
-        @course.like = like_string
+      
+      if (vote_boolean == true)
+        if(params[:to_do] == "like")
+          like_string = @course.like + "," + current_user.id.to_s
+          @course.like = like_string
+        else 
+          dislike_string = @course.dislike + "," + current_user.id.to_s
+          @course.dislike = dislike_string
+        end
+        @course.save
       else 
-        dislike_string = @course.dislike + "," + current_user.id.to_s
-        @course.dislike = dislike_string
+        flash[:danger] = "You can only vote a course once!"
       end
-      @course.save
-    else 
-      flash[:danger] = "You can only vote a course once!"
+    else
+      flash[:danger] = "You're not even logged in! :( STOP TRYING TO BREAK THE WEBSITE."
     end
     redirect_to :controller => 'static_pages', :action => 'home'
   end
