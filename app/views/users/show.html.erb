@@ -3,3 +3,34 @@
   <%= gravatar_for @user %>
   <%= @user.name %>
 </h1>
+<h3>Course by <%= @user.name %>:</h3>
+<hr>
+<% Course.all.each do |course| %>
+<% if (@user.id == course.user_id) %>
+  <div class="course-wrapper-profile">
+    <div class="course-left">
+    <h4>Course Picture:</h4>  
+    <% if course.picture? %>
+      <%= image_tag course.picture.url, class: "course-image" %>
+    <% else %>
+      <h4>No Course Picture</h4>  
+    <% end %>
+    </div>
+    <div class="course-right">
+    <ul class="courses">
+        <li>
+          Course Name: <%= course.name %>
+          <% if current_user.id == course.user_id %>
+            <%= link_to "Edit Your Course", edit_course_path(course.id), class: "btn btn-sm btn-success" %>
+          <% end %>
+        </li>
+        <li>Prerequisite: <%= course.prerequisite %></li>
+        <li>Description: <%= course.description %></li>
+        <li>Created <%= time_ago_in_words(course.created_at) %> ago</li>
+        <li><%= link_to "Like:", like_path(:course_id => course.id, :to_do => "like") %> <%= course.like.split(',').size-1 %></li>
+        <li><%= link_to "Dislike:", like_path(:course_id => course.id, :to_do => "dislike") %> <%= course.dislike.split(',').size-1 %></li>
+    </ul>
+    </div>
+  </div>
+<% end %>
+<% end %>

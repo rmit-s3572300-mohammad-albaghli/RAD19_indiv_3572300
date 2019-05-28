@@ -21,30 +21,42 @@
         </div>
         <div class="course-right">
         <ul class="courses">
-            <li>Course Name: <%= course.name %></li>
-            <li>Prerequisite: <%= course.prerequisite %></li>
-            <li>Category: 
-            <% course.categories.each do |category| %>
-              <% if course.categories.first == category %>
-                <%= category.name %>
-              <% else %>
-                , <%= category.name %>
+          <li>
+            Course Name: <%= course.name %>
+            <% if logged_in %>
+              <% if current_user.id == course.user_id %>
+                <%= link_to "Edit Your Course", edit_course_path(course.id), class: "btn btn-sm btn-success" %>
               <% end %>
             <% end %>
-            </li>
-            <li>Location:
-            <% course.locations.each do |location| %>
-              <% if course.locations.first == location %>
-                <%= location.name %>
-              <% else %>
-                , <%= location.name %>
-              <% end %>
+          </li>
+          <li>Prerequisite: <%= course.prerequisite %></li>
+          <li>Category: 
+          <% course.categories.each do |category| %>
+            <% if course.categories.first == category %>
+              <%= category.name %>
+            <% else %>
+              , <%= category.name %>
             <% end %>
-            </li>
-            <li>Description: <%= course.description %></li>
-            <li>Created <%= time_ago_in_words(course.created_at) %> ago</li>
-            <li>Like: <%= course.like %></li>
-            <li>Dislike: <%= course.dislike %></li>
+          <% end %>
+          </li>
+          <li>Location:
+          <% course.locations.each do |location| %>
+            <% if course.locations.first == location %>
+              <%= location.name %>
+            <% else %>
+              , <%= location.name %>
+            <% end %>
+          <% end %>
+          </li>
+          <li>Description: <%= course.description %></li>
+          <li>Created <%= time_ago_in_words(course.created_at) %> ago</li>
+          <% if logged_in %>
+            <li><%= link_to "Like:", like_path(:course_id => course.id, :to_do => "like") %> <%= course.like.split(',').size-1 %></li>
+            <li><%= link_to "Dislike:", like_path(:course_id => course.id, :to_do => "dislike") %> <%= course.dislike.split(',').size-1 %></li>
+          <% else %>
+            <li>Like: <%= course.like.split(',').size-1 %></li>
+            <li>Dislike: <%= course.dislike.split(',').size-1 %></li>
+          <% end %>
         </ul>
         </div>
       </div>

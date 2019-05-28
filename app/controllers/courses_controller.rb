@@ -21,7 +21,7 @@ class CoursesController < ApplicationController
   end
   
   def create
-    @course = Course.new(category_params)
+    @course = Course.new(course_params)
     @course.like = "0"
     @course.dislike = "0"
     @course.user_id = current_user.id
@@ -32,6 +32,22 @@ class CoursesController < ApplicationController
       redirect_to :controller => 'static_pages', :action => 'home'
     else
       render 'new'
+    end
+  end
+  
+  def edit
+    @course = Course.find(params[:id])
+  end
+  
+  def update
+    @course = Course.find(params[:id])
+    @course.category_ids = params[:category_ids]
+    @course.location_ids = params[:location_ids]
+    if @course.update_attributes(course_params)
+      flash[:success] = "Course updated!"
+      redirect_to :controller => 'static_pages', :action => 'home'
+    else
+      render 'edit'
     end
   end
   
@@ -69,7 +85,7 @@ class CoursesController < ApplicationController
   end
   
   private
-  def category_params
+  def course_params
     params.require(:course).permit(:name, :prerequisite, :description, :picture)
   end
   

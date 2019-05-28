@@ -4,11 +4,11 @@
       <div class="row text-center text-xs-center text-sm-left text-md-left">
         <div class="col-xs-12 col-sm-4 col-md-4">
           <h4>Contact Us</h4>
-          <form class="footerform">
-          <input type="text" class="form-control" placeholder="Name">
-          <input type="email" class="form-control" placeholder="Email">
-          <textarea class="form-control" rows="3" placeholder="Subject"></textarea>
-          <button type="button" class="btn btn-default btn-sm">Submit</button>
+          <form class="footerform" action="contact_us">
+          <input type="text" class="form-control" placeholder="Name" name="name">
+          <input type="email" class="form-control" placeholder="Email" name="email">
+          <textarea class="form-control" rows="3" placeholder="Subject" name="subject"></textarea>
+          <%= submit_tag "Send Email", class: "btn btn-sm btn-primary" %>
           </form>
         </div>
         <div class="col-xs-12 col-sm-4 col-md-4">
